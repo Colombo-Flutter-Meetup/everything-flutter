@@ -4,7 +4,7 @@ import 'package:everything_flutter/models/community.dart';
 import 'package:everything_flutter/models/event.dart';
 import 'package:everything_flutter/models/news.dart';
 import 'package:everything_flutter/models/response_widget.dart';
-import 'package:everything_flutter/models/tutorials.dart';
+import 'package:everything_flutter/models/tutorial.dart';
 
 // The starting point of any response received from a GraphQL query
 
