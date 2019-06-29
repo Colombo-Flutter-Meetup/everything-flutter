@@ -1,6 +1,7 @@
 import 'package:everything_flutter/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 
+// TODO : Improve this page 
 class CommunitesPage extends StatelessWidget {
   const CommunitesPage({Key key}) : super(key: key);
   static const route = "/communities";

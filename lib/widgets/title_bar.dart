@@ -38,7 +38,7 @@ class TitleBar extends StatelessWidget {
             children: <Widget>[
               Text(
                 title,
-                textScaleFactor: 2.5,
+                textScaleFactor: 2.6,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,

@@ -1,7 +1,6 @@
-class Query {
-
+class GraphQLQueries {
   // Receiving a list of news (View models/news.dart)
-  String news = r"""query {
+  static const String news = r"""query {
       news{
         id
         title
@@ -18,7 +17,7 @@ class Query {
   """;
 
   // Receiving a list of events (View models/event.dart)
-  String events = r"""query {
+  static const String events = r"""query {
       events{
         id
         name
@@ -34,7 +33,7 @@ class Query {
   """;
 
   // Receiving a list of tutorials (View models/tutorial.dart)
-  String tutorials = r"""query {
+  static const String tutorials = r"""query {
       tutorials{
         id
         title
@@ -51,7 +50,7 @@ class Query {
   """;
 
   // Receiving a list of communities (View models/community.dart)
-  String communities = r"""query {
+  static const String communities = r"""query {
       communities{
         id
         name
@@ -63,7 +62,7 @@ class Query {
   """;
 
   // Receiving a list of widgets for #WidgetOfTheDay (View models/response_widget.dart)
-  String widgets = r"""query {
+  static const String widgets = r"""query {
         widgets{
           id
           name

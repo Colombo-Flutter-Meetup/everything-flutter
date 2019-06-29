@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:everything_flutter/models/source.dart';
 
+// Retrieves 
 class News {
   String id;
   String title;
