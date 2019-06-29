@@ -1,8 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:everything_flutter/helpers/app_colors.dart';
-import 'package:everything_flutter/widgets/news_item.dart';
+import 'package:everything_flutter/helpers/service_locator.dart';
+import 'package:everything_flutter/scoped_model/dashboard.dart';
+import 'package:everything_flutter/widgets/home_menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
+import 'package:scoped_model/scoped_model.dart';
+
+import '../helpers/app_colors.dart';
+import '../widgets/news_item.dart';
 
 class DashboardPage extends StatefulWidget {
   DashboardPage({Key key}) : super(key: key);
@@ -46,128 +51,28 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   Widget _buildCarouselSlider() {
-    return CarouselSlider(
-      height: _scaler.getHeight(40),
-      viewportFraction: 0.7,
-      initialPage: 0,
-      enableInfiniteScroll: true,
-      enlargeCenterPage: true,
-      items: <Widget>[
-        _buildMenuCard('Events',
-            'https://ministrypass.com/wp-content/uploads/2016/10/Artistic-Fall-Events.jpg'),
-        _buildMenuCard(
-            'Tutorials', 'https://wirelesstrondheim.no/img/tutorial/intro.jpg'),
-      ],
-    );
-  }
-
-  Widget _buildMenuCard(String title, String imageURL) {
-    return Container(
-      // padding: EdgeInsets.symmetric(
-      //   horizontal: _scaler.getWidth(2.5),
-      // ),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Stack(
-          children: <Widget>[
-            Container(
-              height: _scaler.getHeight(40),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  imageURL,
-                  fit: BoxFit.cover,
-                ),
-              ),
+    return ScopedModelDescendant<DashboardModel>(
+      builder: (context, child, model) {
+        return CarouselSlider(
+          height: _scaler.getHeight(40),
+          viewportFraction: 0.7,
+          initialPage: 0,
+          enableInfiniteScroll: true,
+          enlargeCenterPage: true,
+          onPageChanged: (int index) => model.setSelectedPageIndex(index),
+          items: <Widget>[
+            HomeMenuItem(
+              title: 'Events',
+              imageURL:
+                  'https://ministrypass.com/wp-content/uploads/2016/10/Artistic-Fall-Events.jpg',
             ),
-            Container(
-              height: _scaler.getHeight(40),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    AppColors.BRACING_BLUE,
-                  ],
-                ),
-              ),
+            HomeMenuItem(
+              title: 'Tutorials',
+              imageURL: 'https://wirelesstrondheim.no/img/tutorial/intro.jpg',
             ),
-            Positioned(
-              left: _scaler.getWidth(3),
-              top: _scaler.getHeight(2),
-              child: Opacity(
-                opacity: 0.5,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.black,
-                  ),
-                  padding: EdgeInsets.all(5.0),
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: _scaler.getTextSize(18),
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: _scaler.getWidth(3),
-              right: _scaler.getWidth(3),
-              top: _scaler.getHeight(2),
-              child: Container(
-                padding: EdgeInsets.all(5.0),
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: _scaler.getTextSize(18),
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: _scaler.getWidth(5),
-              right: _scaler.getWidth(5),
-              bottom: _scaler.getHeight(2.5),
-              child: Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(_scaler.getWidth(2)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      AppColors.TEAL,
-                      AppColors.DART_BLUE,
-                    ],
-                  ),
-                ),
-                child: Text(
-                  "View All",
-                  style: TextStyle(
-                    fontSize: _scaler.getTextSize(12),
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            )
           ],
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -201,16 +106,19 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     _scaler..init(context);
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            // Status Bar Height
-            Container(height: _scaler.getHeight(5)),
-            _buildAppBar(),
-            _buildCarouselSlider(),
-            _buildNewsStand(),
-          ],
+    return ScopedModel<DashboardModel>(
+      model: locator<DashboardModel>(),
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              // Status Bar Height
+              Container(height: _scaler.getHeight(5)),
+              _buildAppBar(),
+              _buildCarouselSlider(),
+              _buildNewsStand(),
+            ],
+          ),
         ),
       ),
     );

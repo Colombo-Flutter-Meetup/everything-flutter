@@ -62,13 +62,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_responsive_screen:
-    dependency: "direct main"
-    description:
-      name: flutter_responsive_screen
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   flutter_screen_scaler:
     dependency: "direct main"
     description:
@@ -76,18 +69,18 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  flutter_screenutil:
-    dependency: "direct main"
-    description:
-      name: flutter_screenutil
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.5.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  get_it:
+    dependency: "direct main"
+    description:
+      name: get_it
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3+2"
   graphql:
     dependency: transitive
     description:
@@ -179,13 +172,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.22.0"
-  shared_preferences:
+  scoped_model:
     dependency: "direct main"
     description:
-      name: shared_preferences
+      name: scoped_model
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.3"
+    version: "1.0.1"
   simple_animations:
     dependency: "direct main"
     description:

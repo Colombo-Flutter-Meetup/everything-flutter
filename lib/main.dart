@@ -1,9 +1,13 @@
 import 'package:everything_flutter/helpers/routes.dart';
-import 'package:everything_flutter/pages/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-void main() => runApp(MyApp());
+import 'helpers/service_locator.dart';
+
+void main() {
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   final ValueNotifier<GraphQLClient> client = ValueNotifier(

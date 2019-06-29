@@ -1,7 +1,6 @@
 import 'package:everything_flutter/pages/communities.dart';
 import 'package:everything_flutter/pages/dashboard.dart';
 import 'package:everything_flutter/pages/events.dart';
-import 'package:everything_flutter/pages/home.dart';
 import 'package:everything_flutter/pages/login.dart';
 import 'package:everything_flutter/pages/splash.dart';
 import 'package:everything_flutter/pages/tutorials.dart';

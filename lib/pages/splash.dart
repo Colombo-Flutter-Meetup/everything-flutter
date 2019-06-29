@@ -4,11 +4,9 @@ import 'dart:math';
 import 'package:everything_flutter/pages/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../widgets/animation/animated_background.dart';
 import '../widgets/animation/animated_wave.dart';
-import 'home.dart';
 
 // TODO : Improve this page
 class SplashScreen extends StatefulWidget {
@@ -27,8 +25,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future handleTimeout() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isSignedIn = prefs.getBool('isSignedIn') ?? false;
+    // final prefs = await SharedPreferences.getInstance();
+    // final isSignedIn = prefs.getBool('isSignedIn') ?? false;
+    final isSignedIn = true;
     if (isSignedIn) {
       Navigator.of(context).pushNamedAndRemoveUntil(
           DashboardPage.route, (Route<dynamic> route) => false);

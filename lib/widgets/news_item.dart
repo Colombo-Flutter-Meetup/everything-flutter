@@ -1,7 +1,5 @@
 import 'package:everything_flutter/helpers/app_colors.dart';
-import 'package:everything_flutter/helpers/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_screen/flutter_responsive_screen.dart';
 import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
 class NewsItem extends StatelessWidget {
@@ -13,16 +11,17 @@ class NewsItem extends StatelessWidget {
   NewsItem({Key key, this.title, this.source, this.time, this.link, this.image})
       : super(key: key);
 
-  ScreenScaler _scaler = ScreenScaler();
+  final ScreenScaler _scaler = ScreenScaler();
 
   Widget _buildViewAllButton() {
     return Container(
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(_scaler.getHeight(1)),
       child: Text(
         'View All',
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
+          fontSize: _scaler.getTextSize(11),
         ),
       ),
       decoration: BoxDecoration(
@@ -62,7 +61,12 @@ class NewsItem extends StatelessWidget {
         _buildViewAllButton(),
         Container(
           padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
-          child: Text('15 hours ago'),
+          child: Text(
+            '15 hours ago',
+            style: TextStyle(
+              fontSize: _scaler.getTextSize(11),
+            ),
+          ),
         ),
       ],
     );

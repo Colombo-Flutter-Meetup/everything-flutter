@@ -1,23 +1,21 @@
-import 'package:everything_flutter/helpers/app_colors.dart';
-import 'package:everything_flutter/pages/communities.dart';
-import 'package:everything_flutter/pages/events.dart';
-import 'package:everything_flutter/pages/tutorials.dart';
-import 'package:everything_flutter/pages/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_screen/flutter_responsive_screen.dart';
 import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
+import 'package:scoped_model/scoped_model.dart';
 
-class HomeMenuItem extends StatefulWidget {
-  final String title;
-  final String imageURL;
+import '../helpers/app_colors.dart';
+import '../pages/communities.dart';
+import '../pages/events.dart';
+import '../pages/tutorials.dart';
+import '../pages/widgets.dart';
+import '../scoped_model/dashboard.dart';
+
+class HomeMenuItem extends StatelessWidget {
   HomeMenuItem({Key key, this.title, this.imageURL}) : super(key: key);
 
-  _HomeMenuItemState createState() => _HomeMenuItemState();
-}
+  final String imageURL;
+  final String title;
 
-class _HomeMenuItemState extends State<HomeMenuItem> {
-  ScreenScaler _scaler = ScreenScaler();
-  int _selectedIndex = 0;
+  final ScreenScaler _scaler = ScreenScaler();
 
   Widget _buildBackgroundImage() {
     return Container(
@@ -25,7 +23,7 @@ class _HomeMenuItemState extends State<HomeMenuItem> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Image.network(
-          widget.imageURL,
+          imageURL,
           fit: BoxFit.cover,
         ),
       ),
@@ -57,28 +55,35 @@ class _HomeMenuItemState extends State<HomeMenuItem> {
       left: _scaler.getWidth(5),
       right: _scaler.getWidth(5),
       bottom: _scaler.getHeight(2.5),
-      child: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(_scaler.getWidth(2)),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              AppColors.TEAL,
-              AppColors.DART_BLUE,
-            ],
-          ),
-        ),
-        child: Text(
-          "View All",
-          style: TextStyle(
-            fontSize: _scaler.getTextSize(12),
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
+      child: ScopedModelDescendant<DashboardModel>(
+        builder: (BuildContext context, Widget child, DashboardModel model) {
+          return GestureDetector(
+            onTap: () => _handleNavigation(context, model.getSelectedPageIndex),
+            child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(_scaler.getWidth(2)),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    AppColors.TEAL,
+                    AppColors.DART_BLUE,
+                  ],
+                ),
+              ),
+              child: Text(
+                "View All",
+                style: TextStyle(
+                  fontSize: _scaler.getTextSize(12),
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -96,7 +101,7 @@ class _HomeMenuItemState extends State<HomeMenuItem> {
           ),
           padding: EdgeInsets.all(5.0),
           child: Text(
-            widget.title,
+            title,
             style: TextStyle(
               fontSize: _scaler.getTextSize(18),
               fontWeight: FontWeight.bold,
@@ -109,14 +114,14 @@ class _HomeMenuItemState extends State<HomeMenuItem> {
   }
 
   Widget _buildTitle() {
-    Positioned(
+    return Positioned(
       left: _scaler.getWidth(3),
       right: _scaler.getWidth(3),
       top: _scaler.getHeight(2),
       child: Container(
         padding: EdgeInsets.all(5.0),
         child: Text(
-          widget.title,
+          title,
           style: TextStyle(
             fontSize: _scaler.getTextSize(18),
             fontWeight: FontWeight.bold,
@@ -125,6 +130,23 @@ class _HomeMenuItemState extends State<HomeMenuItem> {
         ),
       ),
     );
+  }
+
+  void _handleNavigation(BuildContext context, int _selectedPageIndex) {
+    switch (_selectedPageIndex) {
+      case 0:
+        Navigator.pushNamed(context, EventsPage.route);
+        break;
+      case 1:
+        Navigator.pushNamed(context, TutorialsPage.route);
+        break;
+      case 2:
+        Navigator.pushNamed(context, WidgetsPage.route);
+        break;
+      case 3:
+        Navigator.pushNamed(context, CommunitesPage.route);
+        break;
+    }
   }
 
   @override
@@ -146,19 +168,4 @@ class _HomeMenuItemState extends State<HomeMenuItem> {
       ),
     );
   }
-
-  //  switch (_selectedIndex) {
-  //                   case 0:
-  //                     Navigator.pushNamed(context, EventsPage.route);
-  //                     break;
-  //                   case 1:
-  //                     Navigator.pushNamed(context, TutorialsPage.route);
-  //                     break;
-  //                   case 2:
-  //                     Navigator.pushNamed(context, WidgetsPage.route);
-  //                     break;
-  //                   case 3:
-  //                     Navigator.pushNamed(context, CommunitesPage.route);
-  //                     break;
-  //                 }
 }

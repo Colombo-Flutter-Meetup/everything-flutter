@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_screen/flutter_responsive_screen.dart';
-import 'package:everything_flutter/helpers/app_colors.dart';
+import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
+
+import '../helpers/app_colors.dart';
 
 class TitleBar extends StatelessWidget {
+  TitleBar({Key key, this.title}) : super(key: key);
+
   final String title;
 
-  TitleBar({Key key, this.title}) : super(key: key);
+  final ScreenScaler _scaler = ScreenScaler();
 
   @override
   Widget build(BuildContext context) {
-    Function wp = Screen(MediaQuery.of(context).size).wp;
-
-    Function hp = Screen(MediaQuery.of(context).size).hp;
     return Stack(
       children: <Widget>[
         Container(
-          height: hp(18),
+          height: _scaler.getHeight(18),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30.0),
