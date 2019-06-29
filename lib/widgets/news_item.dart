@@ -1,35 +1,19 @@
-import 'package:everything_flutter/helpers/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 
+import 'rounded_rectangle_button.dart';
+
 class NewsItem extends StatelessWidget {
-  final title;
-  final source;
-  final time;
-  final link;
-  final image;
   NewsItem({Key key, this.title, this.source, this.time, this.link, this.image})
       : super(key: key);
 
-  final ScreenScaler _scaler = ScreenScaler();
+  final image;
+  final link;
+  final source;
+  final time;
+  final title;
 
-  Widget _buildViewAllButton() {
-    return Container(
-      padding: EdgeInsets.all(_scaler.getHeight(1)),
-      child: Text(
-        'View All',
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: _scaler.getTextSize(11),
-        ),
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.DART_BLUE,
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-    );
-  }
+  final ScreenScaler _scaler = ScreenScaler();
 
   Widget _buildTitle() {
     return Container(
@@ -41,12 +25,13 @@ class NewsItem extends StatelessWidget {
             source,
             style: TextStyle(
               fontSize: _scaler.getTextSize(10),
+              color: Colors.grey,
             ),
           ),
           Text(
             title,
             style: TextStyle(
-              fontSize: _scaler.getTextSize(15),
+              fontSize: _scaler.getTextSize(13),
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -58,13 +43,14 @@ class NewsItem extends StatelessWidget {
   Widget _buildBottomItems() {
     return Row(
       children: <Widget>[
-        _buildViewAllButton(),
+        RoundedRecntangleButton(title: 'View More'),
         Container(
           padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
           child: Text(
-            '15 hours ago',
+            time,
             style: TextStyle(
               fontSize: _scaler.getTextSize(11),
+              color: Colors.grey,
             ),
           ),
         ),
@@ -77,11 +63,13 @@ class NewsItem extends StatelessWidget {
       flex: 5,
       child: Container(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.0),
-              color: Colors.amber,
+          padding: EdgeInsets.all(15.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Image.network(
+              image,
+              fit: BoxFit.cover,
+              height: _scaler.getHeight(15),
             ),
           ),
         ),
@@ -109,6 +97,7 @@ class NewsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0.2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),

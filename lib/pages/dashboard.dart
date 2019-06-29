@@ -70,6 +70,14 @@ class _DashboardPageState extends State<DashboardPage> {
               title: 'Tutorials',
               imageURL: 'https://wirelesstrondheim.no/img/tutorial/intro.jpg',
             ),
+            HomeMenuItem(
+              title: 'Widgets',
+              imageURL: 'https://wirelesstrondheim.no/img/tutorial/intro.jpg',
+            ),
+            HomeMenuItem(
+              title: 'Communities',
+              imageURL: 'https://wirelesstrondheim.no/img/tutorial/intro.jpg',
+            ),
           ],
         );
       },
@@ -80,24 +88,52 @@ class _DashboardPageState extends State<DashboardPage> {
     return Column(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
-          alignment: Alignment.topLeft,
-          child: Text(
-            "News",
-            style: TextStyle(
-              fontSize: _scaler.getTextSize(18),
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
+            padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+            alignment: Alignment.topLeft,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "News",
+                  style: TextStyle(
+                    fontSize: _scaler.getTextSize(17),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                Text(
+                  "View All",
+                  style: TextStyle(
+                    fontSize: _scaler.getTextSize(12),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            )),
+        NewsItem(
+          title: 'The 5 best macOS Catalina features',
+          image: 'https://www.clickseed.com/wp-content/uploads/google-news.jpg',
+          source: 'Twitter',
+          time: '15 hours ago',
+          link: 'https://flutter-news.com',
         ),
         NewsItem(
-            title: 'Title',
-            image:
-                'https://ewscripps.brightspotcdn.com/dims4/default/8ad5707/2147483647/strip/true/crop/640x360+0+60/resize/1280x720!/quality/90/?url=https%3A%2F%2Fmediaassets.ktnv.com%2Fphoto%2F2016%2F11%2F22%2FBreaking_News_graphic_20120827002741_640_480_1441066805019_23462145_ver1.0_640_480_1479856203859_50224855_ver1.0_640_480.JPG',
-            source: 'Source',
-            time: 'Time',
-            link: '')
+          title: 'The 5 best macOS Catalina features',
+          image:
+              'https://flutter-news.com/images/default-post-image-thumbnail.png',
+          source: 'Twitter',
+          time: '15 hours ago',
+          link: 'https://flutter-news.com',
+        ),
+        NewsItem(
+          title: 'The 5 best macOS Catalina features',
+          image:
+              'https://flutter-news.com/images/default-post-image-thumbnail.png',
+          source: 'Twitter',
+          time: '15 hours ago',
+          link: 'https://flutter-news.com',
+        )
       ],
     );
   }

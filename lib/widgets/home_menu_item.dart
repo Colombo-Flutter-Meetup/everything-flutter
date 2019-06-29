@@ -3,10 +3,10 @@ import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../helpers/app_colors.dart';
-import '../pages/communities.dart';
-import '../pages/events.dart';
-import '../pages/tutorials.dart';
-import '../pages/widgets.dart';
+import '../pages/categories/communities.dart';
+import '../pages/categories/events.dart';
+import '../pages/categories/tutorials.dart';
+import '../pages/categories/widgets.dart';
 import '../scoped_model/dashboard.dart';
 
 class HomeMenuItem extends StatelessWidget {

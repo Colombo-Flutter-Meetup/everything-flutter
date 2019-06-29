@@ -8,7 +8,6 @@ import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 import '../widgets/animation/animated_background.dart';
 import '../widgets/animation/animated_wave.dart';
 
-// TODO : Improve this page
 class SplashScreen extends StatefulWidget {
   static const route = "/splash";
 
