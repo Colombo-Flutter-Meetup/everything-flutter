@@ -1,17 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:everything_flutter/helpers/graphql_queries.dart';
-import 'package:everything_flutter/helpers/service_locator.dart';
-import 'package:everything_flutter/models/graphql_response.dart';
-import 'package:everything_flutter/models/news.dart';
-import 'package:everything_flutter/scoped_model/dashboard.dart';
-import 'package:everything_flutter/widgets/home_menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../helpers/app_colors.dart';
-import '../widgets/news_item.dart';
+import '../helpers/graphql_queries.dart';
+import '../helpers/service_locator.dart';
+import '../scoped_model/dashboard.dart';
+import '../widgets/home_menu_item.dart';
 
 class DashboardPage extends StatefulWidget {
   DashboardPage({Key key}) : super(key: key);
@@ -115,55 +112,37 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
               ],
             )),
+        //     print(result.data);
+        // GraphQLResponse data =
+        //     GraphQLResponse.fromJson(json.encode(result.data));
+        // print(data.news[0].title);
+        // List<News> newsList = data.news;
+
+        // List<NewsItem> newsStack = [];
+        // newsList.forEach((News news) {
+        //   newsStack.add(
+        //     NewsItem(
+        //       title: news.title,
+        //       source: news.source.name,
+        //       link: news.link,
+        //       image: news.image,
+        //     ),
+        //   );
+        // });
+        // return Column(children: newsStack);
+
         Query(
-          options: QueryOptions(document: GraphQLQueries.news),
-          builder: (QueryResult result, {VoidCallback refetch}) {
-            if (result.loading) {
-              return Center(child: CircularProgressIndicator());
-            }
-            if (result.data == null) {
-              return Center(child: Text("No Data Found !"));
-            }
-            print(result.data['news']);
-            GraphQLResponse data = GraphQLResponse.fromMap(result.data);
-            List<News> newsList = data.news;
-            List<NewsItem> newsStack = [];
-            newsList.forEach((News news) {
-              newsStack.add(
-                NewsItem(
-                  title: news.title,
-                  source: news.source.name,
-                  link: news.link,
-                  image: news.image,
-                ),
-              );
-            });
-            return Column(children: newsStack);
-          },
-        ),
-        NewsItem(
-          title: 'The 5 best macOS Catalina features',
-          image: 'https://www.clickseed.com/wp-content/uploads/google-news.jpg',
-          source: 'Twitter',
-          time: '15 hours ago',
-          link: 'https://flutter-news.com',
-        ),
-        NewsItem(
-          title: 'The 5 best macOS Catalina features',
-          image:
-              'https://flutter-news.com/images/default-post-image-thumbnail.png',
-          source: 'Twitter',
-          time: '15 hours ago',
-          link: 'https://flutter-news.com',
-        ),
-        NewsItem(
-          title: 'The 5 best macOS Catalina features',
-          image:
-              'https://flutter-news.com/images/default-post-image-thumbnail.png',
-          source: 'Twitter',
-          time: '15 hours ago',
-          link: 'https://flutter-news.com',
-        )
+            options: QueryOptions(document: GraphQLQueries.news),
+            builder: (QueryResult result, {VoidCallback refetch}) {
+              print(result.data);
+              if (result.loading) {
+                return Center(child: CircularProgressIndicator());
+              }
+              if (result.data == null) {
+                return Center(child: Text("No Data Found !"));
+              }
+              return Container();
+            }),
       ],
     );
   }
