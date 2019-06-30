@@ -32,7 +32,7 @@ class TitleBar extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: _scaler.getHeight(7.5),
+          top: _scaler.getHeight(8),
           left: _scaler.getWidth(5.5),
           child: Row(
             children: <Widget>[

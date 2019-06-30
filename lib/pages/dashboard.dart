@@ -1,9 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:everything_flutter/helpers/graphql_queries.dart';
 import 'package:everything_flutter/helpers/service_locator.dart';
+import 'package:everything_flutter/models/graphql_response.dart';
+import 'package:everything_flutter/models/news.dart';
 import 'package:everything_flutter/scoped_model/dashboard.dart';
 import 'package:everything_flutter/widgets/home_menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../helpers/app_colors.dart';
@@ -111,6 +115,32 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
               ],
             )),
+        Query(
+          options: QueryOptions(document: GraphQLQueries.news),
+          builder: (QueryResult result, {VoidCallback refetch}) {
+            if (result.loading) {
+              return Center(child: CircularProgressIndicator());
+            }
+            if (result.data == null) {
+              return Center(child: Text("No Data Found !"));
+            }
+            print(result.data['news']);
+            GraphQLResponse data = GraphQLResponse.fromMap(result.data);
+            List<News> newsList = data.news;
+            List<NewsItem> newsStack = [];
+            newsList.forEach((News news) {
+              newsStack.add(
+                NewsItem(
+                  title: news.title,
+                  source: news.source.name,
+                  link: news.link,
+                  image: news.image,
+                ),
+              );
+            });
+            return Column(children: newsStack);
+          },
+        ),
         NewsItem(
           title: 'The 5 best macOS Catalina features',
           image: 'https://www.clickseed.com/wp-content/uploads/google-news.jpg',

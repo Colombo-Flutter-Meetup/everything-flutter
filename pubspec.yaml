@@ -17,6 +17,8 @@ dependencies:
   flutter_screen_scaler : ^1.0.0
   scoped_model: ^1.0.1
   get_it: ^1.0.3
+  snaplist: ^0.1.8
+
 
 
 dev_dependencies:
