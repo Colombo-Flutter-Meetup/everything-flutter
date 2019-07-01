@@ -10,12 +10,16 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.2
-  flutter_responsive_screen: ^1.0.0
   carousel_slider: ^1.3.0
-  graphql_flutter: ^1.0.0
+  graphql_flutter: ^1.0.1
   url_launcher: ^3.0.2
   simple_animations: ^1.3.0
-  shared_preferences: ^0.4.3
+  flutter_screen_scaler : ^1.0.0
+  scoped_model: ^1.0.1
+  get_it: ^1.0.3
+  snaplist: ^0.1.8
+
+
 
 dev_dependencies:
   flutter_test:
@@ -23,3 +27,16 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/dashboard_widgets_notch.png
+    - assets/images/dashboard_widgets.png
+
+  fonts:
+    - family: TTCommons
+      fonts:
+        - asset: assets/fonts/TTCommons-Medium.ttf
+        - asset: assets/fonts/TTCommons-Bold.ttf
+          weight: 900
+        - asset: assets/fonts/TTCommons-Italic.ttf
+          style: italic

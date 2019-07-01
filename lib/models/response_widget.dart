@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+// Retrieves a list of widgets from the backend.
 class ResponseWidget {
   String id;
   String name;

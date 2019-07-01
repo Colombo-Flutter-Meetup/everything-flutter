@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:everything_flutter/pages/events.dart';
-import 'package:everything_flutter/pages/home.dart';
-import 'package:everything_flutter/widgets/animation/animated_background.dart';
-import 'package:everything_flutter/widgets/animation/animated_wave.dart';
+
+import 'package:everything_flutter/pages/dashboard.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_screen_scaler/flutter_screen_scaler.dart';
+
+import '../widgets/animation/animated_background.dart';
+import '../widgets/animation/animated_wave.dart';
 
 class SplashScreen extends StatefulWidget {
   static const route = "/splash";
@@ -19,15 +20,19 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     startTimeout();
+    ScreenScaler()..init(context);
   }
 
   Future handleTimeout() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isSignedIn = prefs.getBool('isSignedIn') ?? false;
+    // final prefs = await SharedPreferences.getInstance();
+    // final isSignedIn = prefs.getBool('isSignedIn') ?? false;
+    final isSignedIn = true;
     if (isSignedIn) {
-      Navigator.of(context).pushNamed(HomePage.route);
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          DashboardPage.route, (Route<dynamic> route) => false);
     } else {
-      Navigator.of(context).pushNamed(EventsPage.route);
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          DashboardPage.route, (Route<dynamic> route) => false);
     }
   }
 
@@ -35,6 +40,13 @@ class _SplashScreenState extends State<SplashScreen> {
     var duration = const Duration(seconds: 4);
     return new Timer(duration, handleTimeout);
   }
+
+  onBottom(Widget child) => Positioned.fill(
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: child,
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +75,6 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
-
-  onBottom(Widget child) => Positioned.fill(
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: child,
-        ),
-      );
 }
 
 class CenteredText extends StatelessWidget {
