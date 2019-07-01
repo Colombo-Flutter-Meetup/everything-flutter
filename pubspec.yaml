@@ -28,6 +28,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  assets:
+    - assets/images/dashboard_widgets_notch.png
+    - assets/images/dashboard_widgets.png
+
   fonts:
     - family: TTCommons
       fonts:

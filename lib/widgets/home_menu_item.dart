@@ -22,7 +22,7 @@ class HomeMenuItem extends StatelessWidget {
       height: _scaler.getHeight(40),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-        child: Image.network(
+        child: Image.asset(
           imageURL,
           fit: BoxFit.cover,
         ),
@@ -43,7 +43,8 @@ class HomeMenuItem extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             Colors.transparent,
-            AppColors.BRACING_BLUE,
+            Colors.transparent,
+            Colors.black54,
           ],
         ),
       ),

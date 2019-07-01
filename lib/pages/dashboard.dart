@@ -64,20 +64,19 @@ class _DashboardPageState extends State<DashboardPage> {
           items: <Widget>[
             HomeMenuItem(
               title: 'Events',
-              imageURL:
-                  'https://ministrypass.com/wp-content/uploads/2016/10/Artistic-Fall-Events.jpg',
+              imageURL: 'assets/images/dashboard_widgets_notch.png',
             ),
             HomeMenuItem(
               title: 'Tutorials',
-              imageURL: 'https://wirelesstrondheim.no/img/tutorial/intro.jpg',
+              imageURL: 'assets/images/dashboard_widgets_notch.png',
             ),
             HomeMenuItem(
               title: 'Widgets',
-              imageURL: 'https://wirelesstrondheim.no/img/tutorial/intro.jpg',
+              imageURL: 'assets/images/dashboard_widgets_notch.png',
             ),
             HomeMenuItem(
               title: 'Communities',
-              imageURL: 'https://wirelesstrondheim.no/img/tutorial/intro.jpg',
+              imageURL: 'assets/images/dashboard_widgets_notch.png',
             ),
           ],
         );
