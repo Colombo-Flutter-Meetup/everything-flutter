@@ -85,6 +85,9 @@ Here are some screenshots from our latest version
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
+User Interface for the project can be seen [here](https://www.figma.com/file/8ReCkE45Mi9meASYDq283b/Everything-Flutter-v3?node-id=0%3A1)
+
+
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
