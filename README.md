@@ -36,11 +36,7 @@ the [Flutter Setup](https://flutter.dev/setup/) guide.
 
 The `flutter run --release` command both builds and installs the Flutter app.
 
-# [![Flutter logo][]][flutter.dev] 
-
-
-[![Build Status - Cirrus][]][Build status]
-[![Gitter Channel][]][Gitter badge]
+ # [![Flutter logo][]][flutter.dev] 
 
 Flutter is Google's mobile app SDK for crafting high-quality native interfaces
 on iOS and Android in record time. Flutter works with existing code, is used by
@@ -62,8 +58,6 @@ mailing list.
 We think Flutter will help you create beautiful, fast apps, with a productive,
 extensible and open development model.
 
-### Beautiful apps
-
 We want to enable designers to deliver their full creative vision without being
 forced to water it down due to limitations of the underlying framework.
 Flutter's [layered architecture] gives you control over every pixel on the
@@ -72,24 +66,20 @@ graphics, video, text and controls without limitation. Flutter includes a full
 [set of widgets][widget catalog] that deliver pixel-perfect experiences on both
 iOS and Android.
 
-![Reflectly hero image][Reflectly hero image]
-
-### Fast apps
-
 Flutter is fast. It's powered by the same hardware-accelerated [Skia] 2D
 graphics library that underpins Chrome and Android. We architected Flutter to
 support glitch-free, jank-free graphics at the native speed of your device.
 Flutter code is powered by the world-class [Dart platform], which enables
 compilation to native 32-bit and 64-bit ARM code for iOS and Android.
 
-### Productive development
-
 Flutter offers stateful hot reload, allowing you to make changes to your code
 and see the results instantly without restarting your app or losing its state.
 
 [![Hot reload animation][]][Hot reload]
 
+## Screenshots
 
+Here are some screenshots from our latest version
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -102,13 +92,8 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
-
-
-
 [Flutter logo]: https://flutter.dev/assets/flutter-lockup-4cb0ee072ab312e59784d9fbf4fb7ad42688a7fdaea1270ccf6bbf4f34b7e03f.svg
 [flutter.dev]: https://flutter.dev
-[Build Status - Cirrus]: https://api.cirrus-ci.com/github/flutter/flutter.svg
-[Build status]: https://cirrus-ci.com/github/flutter/flutter/master
 [Gitter Channel]: https://badges.gitter.im/flutter/flutter.svg
 [Gitter badge]: https://gitter.im/flutter/flutter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [layered architecture]: https://flutter.dev/docs/resources/inside-flutter
