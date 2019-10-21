@@ -26,3 +26,15 @@ List<String> eventCardSubtitles = [
   "First Flutter Hackathon",
   "First Flutter Hackathon",
 ];
+
+List<String> widgetDays=[
+  "WednesDay",
+  "TuesDay",
+  "Monday",
+];
+
+List<String> widgetNames=[
+  "Animated Builder",
+  "ClipRRect",
+  "Silver List",
+];
