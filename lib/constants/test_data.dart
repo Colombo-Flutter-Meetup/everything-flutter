@@ -65,3 +65,41 @@ News widget2 = News(
   image: "https://i.ytimg.com/vi/9z_YNlRlWfA/maxresdefault.jpg",
   source: Source(name: "READ MORE"),
 );
+
+
+
+News tute1 = News(
+  title: "How to connect your Flutter Application to Firebase",
+  time: DateTime.parse("2019-05-30T22:49:51.764000+05:30"),
+  link:
+      "https://api.flutter.dev/flutter/material/Scaffold-class.html",
+  image: "https://i.ytimg.com/vi/vb8YDD7KO00/maxresdefault.jpg",
+  source: Source(name: "MEDIUM"),
+);
+
+News tute2 = News(
+  title: "How to use the BLoC Architecture in your Flutter App",
+  time: DateTime.parse("2019-05-30T22:49:51.764000+05:30"),
+  link:
+      "https://api.flutter.dev/flutter/widgets/Transform-class.html",
+  image: "https://i.ytimg.com/vi/9z_YNlRlWfA/maxresdefault.jpg",
+  source: Source(name: "YOUTUBE"),
+);
+
+News tute3 = News(
+  title: "How to use GraphQL in your Flutter App",
+  time: DateTime.parse("2019-07-30T22:49:51.764000+05:30"),
+  link:
+      "https://api.flutter.dev/flutter/widgets/Transform-class.html",
+  image: "https://i.ytimg.com/vi/9z_YNlRlWfA/maxresdefault.jpg",
+  source: Source(name: "HACKERNOON"),
+);
+
+News tute4 = News(
+  title: "How to add Animations to your Flutter App",
+  time: DateTime.parse("2019-05-30T22:49:51.764000+05:30"),
+  link:
+      "https://api.flutter.dev/flutter/widgets/Transform-class.html",
+  image: "https://i.ytimg.com/vi/9z_YNlRlWfA/maxresdefault.jpg",
+  source: Source(name: "FILLEDSTACKS"),
+);
