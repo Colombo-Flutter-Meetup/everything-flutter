@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
     );
 }
 
-List<News> news = [newsItem, newsItemTwo];
+List<News> news = [newsItem, newsItemTwo,newsItemThree];
 
 
 final _timelineTitle = Text(
