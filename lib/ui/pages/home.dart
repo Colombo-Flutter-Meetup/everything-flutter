@@ -153,21 +153,38 @@ Container _buildMenuCards() => Container(
 
 @widget
 Drawer _buildDrawer() => Drawer(
-      child: ListView(
+      child:new ListView(
         children: <Widget>[
           DrawerHeader(
-            child: Text('Custom Header'),
+            child: new ListView(children: <Widget>[
+              new UserAccountsDrawerHeader(accountName: Text("Name"), accountEmail: Text("email@mail.com"),
+                  currentAccountPicture: new CircleAvatar(
+                    backgroundColor: Colors.grey,
+                    child:new Text("P"),
+                  ),)],),
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
           ),
+
           ListTile(
-            leading: Icon(Icons.photo),
+            //without leading =)
+          leading: Icon(Icons.photo),
             title: Text('First layout'),
           ),
           ListTile(
-            title: Text('Communicate'),
             //without leading =)
+            leading: Icon(Icons.accessibility),
+            title: Text('Second layout'),
+          ),
+          ListTile(
+            //without leading =)
+            leading: Icon(Icons.add_circle_outline),
+            title: Text('Third layout'),
+          ),
+          new Divider(),
+          ListTile(
+            title: Text('Communicate'),
           ),
           ListTile(
             leading: Icon(Icons.share),
