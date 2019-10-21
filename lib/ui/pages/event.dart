@@ -61,14 +61,14 @@ Widget _buildBody() => SafeArea(
       ),
     );
 
-List<News> events = [pastnewsItemone, pastnewsItemtwo];
+List<News> events = [pasteventItemtwo, pasteventItemtwo];
 
 
 @widget
 Widget _buildEvents(List<News> newsList) {
   List<Widget> _columnItems = [];
-  for (var news in newsList) {
-    _columnItems.add(NewsItem(news));
+  for (var event in newsList) {
+    _columnItems.add(NewsItem(event));
 //    _columnItems.add(Divider());
   }
   return Column(children: _columnItems);
