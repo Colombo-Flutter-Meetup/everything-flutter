@@ -18,8 +18,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>(); // ADD THIS LINE
-  
+  final GlobalKey<ScaffoldState> _scaffoldKey =
+      new GlobalKey<ScaffoldState>(); // ADD THIS LINE
+
   @override
   void initState() {
 //    model.dispose(FetchNewsData());
@@ -28,64 +29,60 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    
     ScreenUtil()..init(context);
 
     return Scaffold(
       key: _scaffoldKey,
       appBar: _buildAppBar(),
       body: _buildBody(),
-      drawer: _buildDrawer(),
+      drawer: _buildDrawer(context),
     );
   }
 
-
   @widget
   Widget _buildBody() => SafeArea(
-    child: SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          _timelineTitle,
-          _buildMenuCards(),
-          _buildNewsFeedBar(),
-          _buildNewsStand(news)
-        ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              _timelineTitle,
+              _buildMenuCards(),
+              _buildNewsFeedBar(),
+              _buildNewsStand(news)
+            ],
+          ),
         ),
-      ),
-    );
-  
+      );
+
   @widget
   Widget _buildNewsFeedBar() => Padding(
-    padding: ScreenUtil.getPaddingLTRB(4, 2, 4, 0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Text(
-          "Your News Feed",
-          style: TextStyles.miniTitle,
-          ),
-        GestureDetector(
-          onTap : () {
-            _scaffoldKey.currentState.openDrawer(); // CHANGE THIS LINE
-          },
-          child: Icon(
-            Icons.more_vert,
-            size: ScreenUtil.getFullScreen(12),
+        padding: ScreenUtil.getPaddingLTRB(4, 2, 4, 0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              "Your News Feed",
+              style: TextStyles.miniTitle,
             ),
-          ),
-      ],
-      ),
-    );
+            GestureDetector(
+              onTap: () {
+                _scaffoldKey.currentState.openDrawer(); // CHANGE THIS LINE
+              },
+              child: Icon(
+                Icons.more_vert,
+                size: ScreenUtil.getFullScreen(12),
+              ),
+            ),
+          ],
+        ),
+      );
 }
 
-List<News> news = [newsItem, newsItemTwo];
-
+List<News> news = [newsItem, newsItemTwo, newsItemThree];
 
 final _timelineTitle = Text(
   "Your Timeline",
   style: TextStyles.title,
-  );
-
+);
 
 @widget
 Container _buildMenuCards() => Container(
@@ -152,27 +149,85 @@ Container _buildMenuCards() => Container(
     );
 
 @widget
-Drawer _buildDrawer() => Drawer(
+Drawer _buildDrawer( BuildContext context) => Drawer(
       child: ListView(
         children: <Widget>[
           DrawerHeader(
-            child: Text('Custom Header'),
+            child: Center(
+              child: 
+                  
+                  Row(
+                    children: <Widget>[
+                      Image.asset("assets/images/ic_launcher.png"),
+                      SizedBox(width: ScreenUtil.getWidth(0.6),),
+                      Text(
+                        'Everything Flutter',
+                        style: TextStyle(color: Colors.white,
+                        fontSize: ScreenUtil.getTextSize(14)),
+                        
+                        ),
+                    ],
+                  ),
+                
+            ),
             decoration: BoxDecoration(
-              color: Colors.blue,
+              // color: Colors.deepPurple,
+              gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [Colors.blue, Colors.red])
             ),
           ),
+      ListTile(
+            leading: Icon(Icons.tune),
+            title: Text('Timeline'),
+          ),   
+         
           ListTile(
-            leading: Icon(Icons.photo),
-            title: Text('First layout'),
+            leading: Icon(Icons.event),
+            title: Text('Events'),
+            onTap: () =>
+                        Navigator.pushNamed(context, menuCardTitles[0])
           ),
           ListTile(
+            leading: Icon(Icons.widgets),
+            title: Text('Widgets'),
+             onTap: () =>
+                        Navigator.pushNamed(context, menuCardTitles[1])
+          ),
+           ListTile(
+            leading: Icon(Icons.group),
+            title: Text('Communities'),
+             onTap: () =>
+                        Navigator.pushNamed(context, menuCardTitles[2])
+          ),
+           ListTile(
+            leading: Icon(Icons.assignment),
+            title: Text('Tutorials'),
+             onTap: () =>
+                        Navigator.pushNamed(context, menuCardTitles[3])
+          ),
+           ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
+            //  onTap: () => Navigator.pushNamed(context, menuCardTitles[3])
+          ),
+         
+           new Divider(),
+           ListTile(
             title: Text('Communicate'),
             //without leading =)
           ),
+          
+           
           ListTile(
-            leading: Icon(Icons.share),
-            title: Text('Share layout'),
-          )
+            leading: Icon(Icons.contacts),
+            title: Text('Contact Us'),
+          ),
+            ListTile(
+            leading: Icon(Icons.power_settings_new),
+            title: Text('Sign Out'),
+          ),
         ],
       ),
     );
