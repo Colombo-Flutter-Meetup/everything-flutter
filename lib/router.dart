@@ -18,7 +18,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case routes.NewsPageRoute:
       return MaterialPageRoute(
         builder: (context) => NewsPage(),
-        );
+      );
     case routes.TutorialsPageRoute:
       return MaterialPageRoute(
         builder: (context) => TutorialPage(),
@@ -26,6 +26,14 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case routes.WidgetsPageRoute:
       return MaterialPageRoute(
         builder: (context) => WidgetPage(),
+      );
+    case routes.CommunityPageRoute:
+      return MaterialPageRoute(
+        builder: (context) => CommunityPage(),
+      );
+    case routes.CommPageRoute:
+      return MaterialPageRoute(
+        builder: (context) => CommPage(),
       );
     default:
       return MaterialPageRoute(

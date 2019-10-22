@@ -103,3 +103,24 @@ News tute4 = News(
   image: "https://i.ytimg.com/vi/9z_YNlRlWfA/maxresdefault.jpg",
   source: Source(name: "FILLEDSTACKS"),
 );
+
+
+//COmmunities
+News comm1 = News(
+  title: """Colombo
+Community""",
+  image: "https://techwire.lk/wp-content/uploads/2019/05/flutter-356x267.png",
+);
+
+News comm2 = News(
+  title: """Chicago 
+Community""",
+  image: "https://secure.meetupstatic.com/photos/event/1/8/8/0/600_475026272.jpeg",
+);
+
+News comm3 = News(
+  title: """New York 
+Community""",
+  image: "https://miro.medium.com/max/800/1*-8v7Rg-iNPa53SLA2PICXA.png",
+);
+
