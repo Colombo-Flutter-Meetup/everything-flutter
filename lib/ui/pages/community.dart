@@ -1,18 +1,16 @@
 import 'package:everything_flutter/constants/text_styles.dart';
-import 'package:everything_flutter/model/news.dart';
-import 'package:everything_flutter/ui/widgets/news_item.dart';
 import 'package:flutter/material.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 import 'package:intl/intl.dart';
 import 'package:everything_flutter/constants/test_data.dart';
 
 
-class TutorialPage extends StatefulWidget {
+class CommPage extends StatefulWidget {
   @override
-  _TutorialPageState createState() => _TutorialPageState();
+  _CommPageState createState() => _CommPageState();
 }
 
-class _TutorialPageState extends State<TutorialPage> {
+class _CommPageState extends State<CommPage> {
 
 
 
@@ -44,8 +42,7 @@ AppBar _buildAppBar() => AppBar(
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            _tutorialsTitle,
-            _buildTutes(tutes)
+          
             //  _buildEvents(events)
           ],
         ),
@@ -57,24 +54,6 @@ AppBar _buildAppBar() => AppBar(
 }
 
 
-List<News> tutes = [tute1,tute2,tute3,tute4];
-
-
-final _tutorialsTitle = Text(
-  "Tutorials",
-  style: TextStyles.title,
-  );
-
-
-@widget
-Widget _buildTutes(List<News> newsList) {
-  List<Widget> _columnItems = [];
-  for (var news in newsList) {
-    _columnItems.add(NewsItem(news));
-//    _columnItems.add(Divider());
-  }
-  return Column(children: _columnItems);
-}
 
 final _appBarTitle = Align(
   alignment: Alignment.centerRight,

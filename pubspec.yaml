@@ -64,6 +64,7 @@ flutter:
     - assets/images/dashboard_hero.jpg
     - assets/images/dashboard_widgets.jpg
     - assets/images/flutter_5.jpg
+    - assets/images/ic_launcher.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
