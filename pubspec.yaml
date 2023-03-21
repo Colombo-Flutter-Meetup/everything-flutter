@@ -27,7 +27,7 @@ dependencies:
   timeago: ^2.0.20
   flutter_screen_scaler: ^2.0.0
   url_launcher:
-  dio:
+  dio: any
   get_it:
   equatable:
   logger:
